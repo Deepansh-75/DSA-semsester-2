@@ -1,13 +1,18 @@
-s = input().strip()
+m, n = map(int, input().split())
 
-i = 0
-j = len(s) - 1
+A = []
+B = []
 
-while i < j:
-    if s[i] != s[j]:
-        print("NO")
-        break
-    i += 1
-    j -= 1
-else:
-    print("YES")
+# Input first matrix
+for _ in range(m):
+    A.append(list(map(int, input().split())))
+
+# Input second matrix
+for _ in range(m):
+    B.append(list(map(int, input().split())))
+
+# Add and print result
+for i in range(m):
+    for j in range(n):
+        print(A[i][j] + B[i][j], end=" ")
+    print()
