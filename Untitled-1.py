@@ -1,33 +1,23 @@
-def check_symmetry():
-    try:
-        # Read dimensions
-        m, n = map(int, input().split())
-        
-        # Condition 1: Must be square
-        if m != n:
-            # We still need to consume the remaining input lines even if not square
-            for _ in range(m):
-                input()
-            print("Not a Symmetric Matrix")
-            return
+def find_max_min(arr):
+    if not arr:
+        return None, None
 
-        # Read the matrix
-        matrix = []
-        for _ in range(m):
-            matrix.append(list(map(int, input().split())))
+    # Initialize with the first element
+    max_val = arr[0]
+    min_val = arr[0]
 
-        # Condition 2: Check symmetry A[i][j] == A[j][i]
-        for i in range(m):
-            # We only need to check the upper triangle to avoid redundant comparisons
-            for j in range(i + 1, n):
-                if matrix[i][j] != matrix[j][i]:
-                    print("Not a Symmetric Matrix")
-                    return
+    # Iterate through the array once
+    for num in arr:
+        if num > max_val:
+            max_val = num
+        elif num < min_val:
+            min_val = num
+            
+    return max_val, min_val
 
-        print("Symmetric Matrix")
-        
-    except EOFError:
-        pass
+# Example usage:
+numbers = [34, 7, 23, 32, 5, 62]
+max_num, min_num = find_max_min(numbers)
 
-if __name__ == "__main__":
-    check_symmetry()
+print(f"Maximum: {max_num}")
+print(f"Minimum: {min_num}")
